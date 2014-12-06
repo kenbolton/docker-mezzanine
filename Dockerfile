@@ -1,6 +1,6 @@
 #--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
 FROM ubuntu:trusty
-MAINTAINER Tim Sutton<tim@linfiniti.com>
+MAINTAINER Ken Bolton<ken@bscientific.net>
 
 RUN  export DEBIAN_FRONTEND=noninteractive
 ENV  DEBIAN_FRONTEND noninteractive
@@ -29,7 +29,7 @@ RUN mkdir /root/.ssh
 RUN chmod o-rwx /root/.ssh
 
 #-------------Application Specific Stuff ----------------------------------------------------
-RUN apt-get -y install nginx uwsgi libpython-dev python2.7-dev uwsgi-plugin-python git python-virtualenv vim python-dev
+RUN apt-get -y install nginx uwsgi libpython-dev python2.7-dev libpython2.7-dev libexpat1-dev uwsgi-plugin-python git python-virtualenv vim python-dev
 RUN mkdir /home/web
 ADD server-conf /home/web/server-conf
 # Note that ww-data does not have permissions
