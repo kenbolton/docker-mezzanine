@@ -29,7 +29,7 @@ RUN mkdir /root/.ssh
 RUN chmod o-rwx /root/.ssh
 
 #-------------Application Specific Stuff ----------------------------------------------------
-RUN apt-get -y install nginx uwsgi libpython-dev python2.7-dev libpython2.7-dev libexpat1-dev libc6 libc6-dev uwsgi-plugin-python git python-virtualenv vim python-dev
+RUN apt-get -y install nginx uwsgi libpython-dev python2.7-dev libpython2.7-dev libexpat1-dev libc libc-dev uwsgi-plugin-python git python-virtualenv vim python-dev
 RUN mkdir /home/web
 ADD server-conf /home/web/server-conf
 # Note that ww-data does not have permissions
