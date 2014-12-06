@@ -15,7 +15,10 @@ ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get -y update
 # socat can be used to proxy an external port and make it look like it is local
-RUN apt-get -y install ca-certificates socat openssh-server supervisor rpl pwgen
+RUN apt-get -y install nginx libjpeg-dev python-dev python-setuptools \
+                        git-core postgresql libpq-dev memcached supervisor
+RUN easy_install pip
+RUN pip install virtualenv mercurial
 RUN mkdir /var/run/sshd
 ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
 
@@ -29,7 +32,6 @@ RUN mkdir /root/.ssh
 RUN chmod o-rwx /root/.ssh
 
 #-------------Application Specific Stuff ----------------------------------------------------
-RUN apt-get -y install nginx uwsgi python-dev libpython-dev uwsgi-plugin-python git python-virtualenv vim
 RUN mkdir /home/web
 ADD server-conf /home/web/server-conf
 # Note that ww-data does not have permissions
