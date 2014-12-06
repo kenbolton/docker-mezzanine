@@ -15,8 +15,8 @@ ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get -y update
 # socat can be used to proxy an external port and make it look like it is local
-RUN apt-get -y install nginx libjpeg-dev python-dev python-setuptools \
-                        git git-core postgresql libjpeg8-dev libpq-dev memcached supervisor
+RUN apt-get -y -q install -f nginx libjpeg-dev python-dev python-setuptools \
+                        git-core postgresql libjpeg8-dev libpq-dev memcached supervisor
 RUN easy_install pip
 RUN pip install virtualenv mercurial
 RUN mkdir /var/run/sshd
